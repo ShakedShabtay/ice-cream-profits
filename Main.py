@@ -56,10 +56,35 @@ class IceCreamWindow(QWidget):
         main_layout.addLayout(bottom_layout)
 
         self.setLayout(main_layout)
-        
 
+    def load_file(self):
+        file_path, _ = QFileDialog.getOpenFileName(
+            self, "Select Ice Cream File", "", "CSV Files (*.csv);;All Files (*)"
+        )
+        if file_path != "":
+            self.file_label.setText(os.path.basename(file_path))
+            self.temperatures = []
+            self.profits = []
 
+            with open(file_path, 'r') as f:
+                next(f)  
+                for line in f:
+                    parts = line.strip().split(',')
+                    if len(parts) >= 2:
+                        temp = float(parts[0])
+                        profit = float(parts[1])
+                        self.temperatures.append(temp)
+                        self.profits.append(profit)
 
+            self.plot_graph()
+
+    def plot_graph(self):
+        self.ax.clear()
+
+        self.ax.scatter(self.temperatures, self.profits, s=1, color='blue', label='Daily Sales')
+
+        self.ax.spines['top'].set_visible(False)
+        self.ax.spines['right'].set_visible(False)
 
 
 
