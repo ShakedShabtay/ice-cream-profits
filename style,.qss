@@ -10,3 +10,22 @@ QLabel#title {
     color: teal;
     margin-bottom: 6px;
 }
+QPushButton {
+    background-color: steelblue;
+    color: white;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: dodgerblue;
+}
+
+QPushButton:pressed {
+    background-color: darkblue;
+}
+
+QPushButton#about_btn {
+    background-color: slategray;
+}
