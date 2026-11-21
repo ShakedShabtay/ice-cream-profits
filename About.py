@@ -27,18 +27,27 @@ class About(QWidget):
         self.name_label = QLabel("Name: Shaked Shabtay")
         self.email_label = QLabel("Email: Shaked789@gmail.com")
 
+        self.linkedin_label = QLabel(
+            '<a href="https://www.linkedin.com/in/shaked-shabtay">My LinkedIn Profile</a>'
+        )
+        self.linkedin_label.setOpenExternalLinks(True)
 
 
+        self.github_label = QLabel(
+            f'<a href="{self.github_url}">GitHub Repository</a>'
+        )
+        self.github_label.setOpenExternalLinks(True)
 
+        layout = QVBoxLayout()
+        layout.addWidget(self.title_label)
+        layout.addWidget(self.image_label, alignment=Qt.AlignCenter)
+        layout.addWidget(self.name_label)
+        layout.addWidget(self.email_label)
+        layout.addWidget(self.linkedin_label)
+        layout.addWidget(self.github_label)
+        layout.addStretch()
 
-
-
-
-
-
-
-
-
+        self.setLayout(layout)
 
 
 if __name__ == "__main__":
