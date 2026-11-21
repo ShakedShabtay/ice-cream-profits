@@ -1,11 +1,13 @@
 import os
 import numpy as np
+import matplotlib
+matplotlib.use('QtAgg')
 import matplotlib.pyplot as plt
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg, NavigationToolbar2QT
 from PySide6.QtWidgets import (
     QApplication, QWidget, QLabel, QPushButton,
     QFileDialog, QVBoxLayout, QHBoxLayout
 )
+from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg, NavigationToolbar2QT
 from About import About
 
 class IceCreamWindow(QWidget):
@@ -113,7 +115,7 @@ class IceCreamWindow(QWidget):
         self.canvas.draw()
 
     def open_about(self):
-        self.about_window = About("https://github.com/ShakedShabtay/ice-cream-profits.git")
+        self.about_window = About("https://github.com/ShakedShabtay/ice-cream-profits")
         self.about_window.show()
 
 

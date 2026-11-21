@@ -4,7 +4,7 @@ from PySide6.QtCore import Qt
 
 
 class About(QWidget):
-    def __init__(self, github_url="https://github.com/ShakedShabtay/ice-cream-profits.git"):
+    def __init__(self, github_url="https://github.com/ShakedShabtay/ice-cream-profits"):
         super().__init__()
         self.github_url = github_url
         self.setup_ui()
@@ -12,6 +12,9 @@ class About(QWidget):
     def setup_ui(self):
         self.setWindowTitle("About")
         self.resize(360, 420)
+
+        self.title_label = QLabel("Ice Cream Profits - Developer Info")
+        self.title_label.setObjectName("title")
 
 
         self.image_label = QLabel()
