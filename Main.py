@@ -86,16 +86,35 @@ class IceCreamWindow(QWidget):
         self.ax.spines['top'].set_visible(False)
         self.ax.spines['right'].set_visible(False)
 
+        if len(self.temperatures) > 1:
+            coefficients = np.polyfit(self.temperatures, self.profits, 1)
+            line_function = np.poly1d(coefficients)
 
+            line_x = np.linspace(min(self.temperatures), max(self.temperatures), 100)
+            line_y = line_function(line_x)
 
+            self.ax.plot(line_x, line_y, color='red', linewidth=1.5, label='Trend Line')
 
+            equation_text = f"y = {coefficients[0]:.2f}x + {coefficients[1]:.2f}"
+            self.ax.text(
+                min(self.temperatures),
+                max(self.profits) * 0.92,
+                equation_text,
+                color='red',
+                fontsize=11,
+                fontweight='bold'
+            )
 
+        self.ax.set_title("Ice Cream Profits vs. Outside Temperature")
+        self.ax.set_xlabel("Outside Temperature")
+        self.ax.set_ylabel("Ice Cream Profits ($)")
+        self.ax.legend()
 
+        self.canvas.draw()
 
-
-
-
-
+    def open_about(self):
+        self.about_window = About("https://github.com/ShakedShabtay/ice-cream-profits.git")
+        self.about_window.show()
 
 
 if __name__ == "__main__":
